@@ -8,7 +8,7 @@
 		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>project.from.aigerim</groupId>
 	<artifactId>rent-cars-kg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rent-cars-kg</name>

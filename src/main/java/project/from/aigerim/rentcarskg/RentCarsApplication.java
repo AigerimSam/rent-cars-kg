@@ -1,4 +1,4 @@
-package com.example.rentcarskg;
+package project.from.aigerim.rentcarskg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
