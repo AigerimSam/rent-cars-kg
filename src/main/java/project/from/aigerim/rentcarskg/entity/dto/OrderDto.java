@@ -3,10 +3,8 @@ package project.from.aigerim.rentcarskg.entity.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import project.from.aigerim.rentcarskg.entity.Address;
-import project.from.aigerim.rentcarskg.entity.Car;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 public class OrderDto {
