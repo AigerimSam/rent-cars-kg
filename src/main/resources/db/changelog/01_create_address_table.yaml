@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "Create address table"
+      author: aigerimsam2692@gmail.com
+      changes:
+        - createTable:
+            tableName: tb_address
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: city
+                  type: varchar
+              - column:
+                  name: street
+                  type: varchar
+              - column:
+                  name: building_num
+                  type: int
