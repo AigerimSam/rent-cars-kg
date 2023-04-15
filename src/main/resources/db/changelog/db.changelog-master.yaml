@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/02_create_uuid_generator_function.sql
   - include:
       file: db/changelog/03_create_price_table.yaml
+  - include:
+      file: db/changelog/04_create_cars_busy_days.yaml
