@@ -12,5 +12,5 @@ public interface CarBusyDaysMapper {
 
     CarBusyDaysDto toDto(CarBusyDaysEntity carBusyDays);
 
-    //CarBusyDaysDto toDtoList(List<CarBusyDaysEntity> days);
+    List<CarBusyDaysDto> toDtoList(List<CarBusyDaysEntity> days);
 }
