@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "Create price table"
+      author: aigerimsam2692@gmail.com
+      changes:
+        - createTable:
+            tableName: tb_price
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: price
+                  type: double precision
+              - column:
+                  name: start_date
+                  type: date
+              - column:
+                  name: end_date
+                  type: date
