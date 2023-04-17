@@ -14,8 +14,8 @@ public class PriceDto {
     private UUID id;
     @NotNull
     private Double price;
-    @NotEmpty
+    @NotNull
     private LocalDate startDate;
-    @NotEmpty
+    @NotNull
     private LocalDate endDate;
 }

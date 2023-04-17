@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "Create car table"
+      author: aigerimsam2692@gmail.com
+      changes:
+        - createTable:
+            tableName: tb_car
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: category
+                  type: varchar
+              - column:
+                  name: color
+                  type: varchar
+              - column:
+                  name: engine_type
+                  type: varchar
+              - column:
+                  name: engine_volume
+                  type: double
+              - column:
+                  name: gas_per100
+                  type: integer
+              - column:
+                  name: is_available
+                  type: boolean
+              - column:
+                  name: mnf_year
+                  type: date
+              - column:
+                  name: model
+                  type: varchar
+              - column:
+                  name: photo
+                  type: varchar
+              - column:
+                  name: transmission
+                  type: varchar
