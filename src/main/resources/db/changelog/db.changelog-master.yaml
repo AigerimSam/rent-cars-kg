@@ -8,8 +8,12 @@ databaseChangeLog:
   - include:
       file: db/changelog/04_create_cars_busy_days.yaml
   - include:
+      file: db/changelog/08_create_discount_table.yaml
+  - include:
+      file: db/changelog/06_create_car_table.yaml
+  - include:
       file: db/changelog/05_create_car_busy_days_table.sql
   - include:
       file: db/changelog/07_create_car_price_table.sql
   - include:
-      file: db/changelog/06_create_car_table.yaml
+      file: db/changelog/09_create_car_discount_table.sql
