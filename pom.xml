@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>project.from.aigerim</groupId>
-	<artifactId>rent-cars-kg</artifactId>
+	<artifactId>rent-carEntities-kg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rent-cars-kg</name>
-	<description>rent-cars-kg</description>
+	<name>rent-carEntities-kg</name>
+	<description>rent-carEntities-kg</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
