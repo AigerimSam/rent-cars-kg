@@ -18,7 +18,7 @@ import java.util.UUID;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car {
+public class CarEntity {
     @Id
     @GeneratedValue
     private UUID id;
@@ -47,10 +47,18 @@ public class Car {
     @Column(name = "is_available")
     private Boolean isAvailable;
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tb_car_car_busy_days",
+            joinColumns = {@JoinColumn(name = "car_id")},
+            inverseJoinColumns = {@JoinColumn(name = "car_busy_days_id")})
     private List<CarBusyDaysEntity> carBusyDays;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "tb_car_price",
             joinColumns = {@JoinColumn(name = "car_id")},
             inverseJoinColumns = {@JoinColumn(name = "prices_id")})
     private List<PriceEntity> prices;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tb_car_discount",
+            joinColumns = {@JoinColumn(name = "car_id")},
+            inverseJoinColumns = {@JoinColumn(name = "discount_id")})
+    private List<Discount> discounts;
 }

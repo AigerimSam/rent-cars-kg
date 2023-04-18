@@ -40,4 +40,6 @@ public class CarDto {
     @NotNull
     @NotEmpty
     private List<PriceDto> prices;
+    private List<DiscountDto> discounts;
+
 }

@@ -2,10 +2,7 @@ package project.from.aigerim.rentcarskg.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -20,12 +17,12 @@ public class Discount {
     @Id
     @GeneratedValue
     private UUID id;
-//    @ManyToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-    //private Car car;
+    @Column(name = "discount")
     private Double discount;
+    @Column(name = "day")
     private Integer days;
+    @Column(name = "start_day")
     private LocalDate startDate;
+    @Column(name = "end_day")
     private LocalDate endDate;
 }
-
