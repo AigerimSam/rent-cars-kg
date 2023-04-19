@@ -1,17 +1,19 @@
 package project.from.aigerim.rentcarskg.service.impl;
 
+import liquibase.pro.packaged.L;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import project.from.aigerim.rentcarskg.entity.CarBusyDaysEntity;
 import project.from.aigerim.rentcarskg.entity.CarEntity;
+import project.from.aigerim.rentcarskg.entity.PriceEntity;
 import project.from.aigerim.rentcarskg.entity.dto.CarDto;
 import project.from.aigerim.rentcarskg.mapper.CarMapper;
 import project.from.aigerim.rentcarskg.repository.CarRepository;
 import project.from.aigerim.rentcarskg.service.CarService;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -30,12 +32,37 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto findById(UUID id) {
         Optional<CarEntity> entity = repository.findById(id);
-        return entity.map(mapper::toDto).orElse(null);
+        if (entity.isPresent()) {
+            CarEntity car = entity.get();
+            PriceEntity activePrice = findActivePrice(car.getPrices());
+            if (activePrice == null) {
+                log.error("Car is not available today");
+                return null;
+            } else {
+                car.setPrices(Collections.singletonList(activePrice));
+                return mapper.toDto(car);
+            }
+        }
+        else {
+            log.error("Can not find car by id {}", id);
+            return null;
+        }
     }
 
     @Override
     public List<CarDto> findAll() {
-        return mapper.toDtoList(repository.findAll());
+        List<CarEntity> cars = repository.findAll();
+        List<CarEntity> result = new ArrayList<>();
+        for (CarEntity car : cars) {
+            PriceEntity activePrice = findActivePrice(car.getPrices());
+            if (activePrice == null) {
+                log.error("Car is not available today");
+            } else {
+                car.setPrices(Collections.singletonList(activePrice));
+                result.add(car);
+            }
+        }
+        return mapper.toDtoList(result);
     }
 
     @Override
@@ -74,5 +101,18 @@ public class CarServiceImpl implements CarService {
         entity.setPrices(update.getPrices());
         entity.setDiscounts(update.getDiscounts());
         return entity;
+    }
+
+    private PriceEntity findActivePrice(List<PriceEntity> prices) {
+        for (PriceEntity price : prices) {
+            if (price.getStartDate().isBefore(LocalDate.now()) && price.getEndDate().isAfter(LocalDate.now())) {
+                return price;
+            }
+        }
+        return null;
+    }
+
+    public void updateCarBusyDays(CarEntity carEntity){
+        repository.save(carEntity);
     }
 }

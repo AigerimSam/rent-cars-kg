@@ -17,3 +17,9 @@ databaseChangeLog:
       file: db/changelog/07_create_car_price_table.sql
   - include:
       file: db/changelog/09_create_car_discount_table.sql
+  - include:
+      file: db/changelog/10_create_order_table.sql
+  - include:
+      file: db/changelog/11_remove_price_column_from_order_table.sql
+  - include:
+      file: db/changelog/12_create_car_order_table.sql

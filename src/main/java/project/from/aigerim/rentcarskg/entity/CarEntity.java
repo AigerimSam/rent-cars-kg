@@ -60,5 +60,5 @@ public class CarEntity {
     @JoinTable(name = "tb_car_discount",
             joinColumns = {@JoinColumn(name = "car_id")},
             inverseJoinColumns = {@JoinColumn(name = "discount_id")})
-    private List<Discount> discounts;
+    private List<DiscountEntity> discounts;
 }
